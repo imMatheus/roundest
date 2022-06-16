@@ -17,5 +17,4 @@ model Vote {
   createdAt    DateTime @default(now())
   votedFor     Int
   votedAgainst Int
-
 }

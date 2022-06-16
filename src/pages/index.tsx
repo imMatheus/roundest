@@ -3,6 +3,7 @@ import { trpc } from '@/utils/trpc'
 import { getOptionsForVote } from '@/utils/getRandomPokemon'
 import { useState } from 'react'
 import { inferQueryResponse } from './api/trpc/[trpc]'
+import Image from 'next/image'
 
 const Home: NextPage = () => {
     const [[first, second], updateId] = useState(getOptionsForVote())
@@ -62,10 +63,12 @@ const PokemonListing: React.FC<{
     return (
         <div className='w-64 flex flex-col'>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
                 src={pokemon.sprites.front_default || ''}
-                alt=''
-                className='w-full h-64'
+                alt={pokemon.name}
+                width={256}
+                height={256}
+                layout='fixed'
             />
             <div className='text-xl text-center capitalize'>{pokemon.name}</div>
             <button
